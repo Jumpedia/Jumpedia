@@ -86,7 +86,7 @@ Show all static and task attribute values of all tasks a user has **not** given 
 
 `/task give <task> [user_attribute_value_mapping] [user] [list]`
 - `<task>`: The name or alias of a task.
-- `[user_attribute_values]`: User attributes with associated values, using [this]() syntax.
+- `[user_attribute_value_mapping]`: User attributes with associated values, using [this]() syntax.
 - `[user]`: The user whom is given the task. By default the executing user.
 - `[list]`: The name of the list in which the task should be searched for. By default the executing user's selected list, if the user has it set, otherwise the community's default selected list.
 
@@ -106,10 +106,10 @@ Remove the specified task from the given user.
 If the given user is somebody other than the executing user, the community rank **moderator** is required. 
 
 ### Task (Privileged)
-`/task create <name> <list> [aliases] [task_attribute_values]` 
+`/task create <name> <list> [aliases] [task_attribute_value_mapping]` 
 - `<name>`: The name the new task should have.
 - `<list>`: The name of the list in which the task should be created in. It needs to be specified explicitly for security reasons.
 - `[aliases]`: The aliases the new task should have.
-- `[task_attribute_values]`: Task attributes with associated values, using [this]() syntax.
+- `[task_attribute_value_mapping]`: Task attributes with associated values, using [this]() syntax.
 
 Create a new task with the specified name, aliases......... 
