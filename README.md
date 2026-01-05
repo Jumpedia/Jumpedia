@@ -36,7 +36,7 @@ Parameters wrapped in `<>` are required, while parameters wralled in `[]` are op
 
 ### Task
 `/task info <task> [list]`
-- `<task>`: The name or an alias of a task.
+- `<task>`: The name or alias of a task.
 - `[list]`: The name of the list in which the task should be searched for. By default the executing user's selected list, if the user has it set, otherwise the community's default selected list.
 
 Show all static and task attribute values of the specified task. 
