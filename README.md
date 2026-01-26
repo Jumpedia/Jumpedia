@@ -160,3 +160,10 @@ The community rank **moderator** is required.
 Replace the previous task attribute value mapping of the specified task with the one specified.
 
 The community rank **moderator** is required.
+
+### User
+A user is any Discord user interacting with Jumpedia. Every user has 3 rank types that defines their privileges (see: [what-are-ranks]()
+
+
+
+### What are ranks?
