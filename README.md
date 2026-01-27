@@ -241,7 +241,7 @@ The community rank **moderator** is required.
 `/task edit edit_attribute_value_mapping`
 - `<list>`: The name of the list in which the task should be searched for.
 - `<task>`: The name or alias of the task.
-- `<new_attribute_value_mapping>`: The new task attribute value mapping to replace the previous task attribute value mapping of the task with, using [this]() syntax.
+- `[new_attribute_value_mapping]`: The new task attribute value mapping to replace the previous task attribute value mapping of the task with, using [this]() syntax. By default empty.
 
 Replace the previous task attribute value mapping of the specified task with the one specified.
 
@@ -252,7 +252,7 @@ The community rank **moderator** is required.
 `/user info`
 - `[user]`: The user of whom to get info from. By default the interacting user.
 
-Show the name, ranks and selected list of the specified user. If the command is not executed in a server that is connected to a community, the community specific information is left out.
+Show the name, selected list and ranks of the specified user. If the command is not executed in a server that is connected to a community, the community specific information is left out.
 
 ---
 
@@ -260,7 +260,7 @@ Show the name, ranks and selected list of the specified user. If the command is 
 
 **Coming soon...**
 
-Show the name, ranks and selected list of all users in the community.
+Show the name, selected list and ranks of all users in the community.
 
 ---
 
