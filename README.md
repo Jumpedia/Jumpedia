@@ -23,7 +23,6 @@ These guides are recommended for users who got promoted to a new rank inside of 
 ### Jumepedia Staff Guides
 - **Meta Administrator's Guide:** link
 
-
 ## Create/Connect a Community
 If you want to connect an existing community to your Discord server, [click here]() to invite the Jumpedia Discord bot to your server and then use the [community connect](#community-connect) command to actually connect the specfic community to your server.
 
@@ -32,11 +31,12 @@ If you want to create a community, you will have to be patient for just a tiny b
 ## Slash Commands
 Discord slash commands are currently the only way to interact with Jumpedia. You can use them by being on a Discord server in which the Jumpedia bot is also on.
 
+[tasks browse test](#tasks-browse)
 Parameters wrapped in `<>` are required, while parameters wralled in `[]` are optional.
 
 ### Attribute
 
-`/attribute info`
+#### `/attribute info`
 - `<attribute>`: The name or alias of the attribute.
 - `[list]`:  The name of the list in which the attribute should be searched for. By default the interacting user's selected list, if the user has it set, otherwise the community's default selected list.
 
@@ -44,7 +44,7 @@ Show the name, aliases, type, slot type, position, min slots, max slots and coll
 
 ---
 
-`/attributes browse`
+#### `/attributes browse`
 - `[type]`: The type to only show attributes of. By default show all types.
 - `[list]`: The name of the list from where the attribute should be taken from. By default the interacting user's selected list, if the user has it set, otherwise the community's default selected list.
 
@@ -52,7 +52,7 @@ Show the name, aliases, type, slot type, position, min slots, max slots and coll
 
 ### Attribute (Privileged)
 
-`/attribute create`
+#### `/attribute create`
 - `<list>`: The name of the list in which the attribute should be created in.
 - `<type>`: The type the new attribute should have.
 - `<name>`: The name the new attribute should have.
@@ -67,7 +67,7 @@ The community rank **administrator** is required.
 
 ---
 
-`/attribute nuke`
+#### `/attribute nuke`
 - `<list>`: The name of the list in which the attribute should be searched for.
 - `<type>`: The type of the attribute.
 - `<attribute>`: The name or alias of the attribute.
@@ -78,7 +78,7 @@ The community rank **administrator** is required.
 
 ---
 
-`/attribute edit name`
+#### `/attribute edit name`
 - `<list>`: The name of the list in which the attribute should be searched for.
 - `<type>`: The type of the attribute.
 - `<attribute>`: The name or alias of the attribute.
@@ -90,7 +90,7 @@ The community rank **administrator** is required.
 
 ---
 
-`/attribute edit aliases`
+#### `/attribute edit aliases`
 - `<list>`: The name of the list in which the attribute should be searched for.
 - `<type>`: The type of the attribute.
 - `<attribute>`: The name or alias of the attribute.
@@ -102,7 +102,7 @@ The community rank **administrator** is required.
 
 ---
 
-`/attribute edit min_and_max_slots`
+#### `/attribute edit min_and_max_slots`
 - `<list>`: The name of the list in which the attribute should be searched for.
 - `<type>`: The type of the attribute.
 - `<attribute>`: The name or alias of the attribute.
@@ -116,7 +116,9 @@ match the new bounds though.
 
 The community rank **administrator** is required.
 
-`/attribute edit collection`
+---
+
+#### `/attribute edit collection`
 - `<list>`: The name of the list in which the attribute should be searched for.
 - `<type>`: The type of the attribute.
 - `<attribute>`: The name or alias of the attribute.
@@ -130,7 +132,7 @@ The community rank **administrator** is required.
 
 ### Task
 
-`/task info`
+#### `/task info`
 - `<task>`: The name or alias of the task.
 - `[list]`: The name of the list in which the task should be searched for. By default the interacting user's selected list, if the user has it set, otherwise the community's default selected list.
 
@@ -138,7 +140,7 @@ Show all static and task attribute values of the specified task.
 
 ---
 
-`/task info_user`
+#### `/task info_user`
 - `<task>`: The name or alias of the task.
 - `[user]`: The user of whom to grab user attribute values from. By default the interacting user.
 - `[list]`: The name of the list in which the task should be searched for. By default the interacting user's selected list, if the user has it set, otherwise the community's default selected list.
@@ -147,7 +149,7 @@ Show all static, task and user attribute values of the specified task. The user 
 
 ---
 
-`/tasks browse`
+#### `/tasks browse`
 - `[filter]`: The filter, using [this]() syntax, to apply to all tasks of the specified list. If not specified, no filter is applied.
 - `[sort]`: The sort, using [this]() syntax, to apply to all tasks of the specified list. If not specified, sort by the static attribute `name`.
 - `[yield]`: The yield, using [this]() syntax, to apply to all tasks of the specified list. If not specified, the static attribute `name` and all attributes used in the `[filter]` and `[sort]` will be yielded.
@@ -157,7 +159,7 @@ Show all static and task attribute values of all tasks in the specified list, wi
 
 ---
 
-`/tasks browse_user`
+#### `/tasks browse_user`
 - `[filter]`: The filter, using [this]() syntax, to apply to all tasks of the specified list. By default no filter is applied.
 - `[sort]`: The sort, using [this]() syntax, to apply to all tasks of the specified list. By default sort by the static attribute `name`.
 - `[yield]`: The yield, using [this]() syntax, to apply to all tasks of the specified list. By default the static attribute `name`, all attributes used in the `[filter]` and `[sort]` and all user attributes are yielded.
@@ -171,30 +173,30 @@ If `[given]` is false, only show the tasks that have not yet been given to the u
 
 ---
 
-`/task give`
+#### `/task give`
 - `<task>`: The name or alias of the task.
 - `[user_attribute_value_mapping]`: User attributes with associated values, using [this]() syntax.
 - `[user]`: The user whom the task is given. By default the interacting user.
 - `[list]`: The name of the list in which the task should be searched for. By default the interacting user's selected list, if the user has it set, otherwise the community's default selected list.
 
-Give the specified task to the specified user. The opposite of the `/task take` command below.
+Give the specified task to the specified user. The opposite of the #### `/task take` command below.
 
 If the specified user is somebody other than the interacting user, the community rank **moderator** is required. 
 
 ---
 
-`/task take`
+#### `/task take`
 - `<task>`: The name or alias of the task.
 - `[user]`: The user from whom the task is taken away. By default the interacting user.
 - `[list]`: The name of the list in which the task should be searched for. By default the interacting user's selected list, if the user has it set, otherwise the community's default selected list.
 
-Take away the specified task from the specified user. The opposite of the `/task give` command above.
+Take away the specified task from the specified user. The opposite of the #### `/task give` command above.
 
 If the specified user is somebody other than the interacting user, the community rank **moderator** is required. 
 
 ### Task (Privileged)
 
-`/task create` 
+#### `/task create` 
 - `<list>`: The name of the list in which the task should be created in.
 - `<name>`: The name the new task should have.
 - `[aliases]`: The aliases the new task should have, using [this]() syntax. By default empty.
@@ -206,7 +208,7 @@ The community rank **helper** is required.
 
 ---
 
-`/task nuke`
+#### `/task nuke`
 - `<list>`: The name of the list in which the task should be searched for.
 - `<task>`: The name or alias of the task.
 
@@ -216,7 +218,7 @@ The community rank **moderator** is required.
 
 ---
 
-`/task edit name`
+#### `/task edit name`
 - `<list>`: The name of the list in which the task should be searched for.
 - `<task>`: The name or alias of the task.
 - `<new_name>`: The new name the task should be renamed to.
@@ -227,7 +229,7 @@ The community rank **moderator** is required.
 
 ---
 
-`/task edit aliases`
+#### `/task edit aliases`
 - `<list>`: The name of the list in which the task should be searched for.
 - `<task>`: The name or alias of the task.
 - `<new_aliases>`: The new aliases to replace the previous aliases of the task with, using [this]() syntax.
@@ -238,7 +240,7 @@ The community rank **moderator** is required.
 
 ---
 
-`/task edit edit_attribute_value_mapping`
+#### `/task edit edit_attribute_value_mapping`
 - `<list>`: The name of the list in which the task should be searched for.
 - `<task>`: The name or alias of the task.
 - `[new_attribute_value_mapping]`: The new task attribute value mapping to replace the previous task attribute value mapping of the task with, using [this]() syntax. By default empty.
@@ -249,14 +251,14 @@ The community rank **moderator** is required.
 
 ### User
 
-`/user info`
+#### `/user info`
 - `[user]`: The user of whom to get info from. By default the interacting user.
 
 Show the name, selected list and ranks of the specified user. If the command is not executed in a server that is connected to a community, the community specific information is left out.
 
 ---
 
-`/users browse`
+#### `/users browse`
 
 **Coming soon...**
 
@@ -264,7 +266,7 @@ Show the name, selected list and ranks of all users in the community.
 
 ---
 
-`/users browse_task`
+#### `/users browse_task`
 - `<task>`: The name or alias of the task for which the user attribute values should be taken from.
 - `[given]`: Whether to only show the users that have been given the task or to only show the users that are missing it. By default true (show only the users with the task given). 
 - `[list]`: The name of the list in which the task should be searched for. By default the interacting user's selected list, if the user has it set, otherwise the community's default selected list.
@@ -276,7 +278,7 @@ Show the name, ranks, selected list and user attribute values of all users in th
 
 ---
 
-`/user set_selected_list`
+#### `/user set_selected_list`
 - `[list]`: The name of the list that should be set as the default. If not specified, this will unset the user's selected list.
 - `[user]`: The user for whom the list should be set as the default. By default the interacting user.
 
@@ -287,7 +289,7 @@ If the specified user is somebody other than the interacting user, the community
 
 ### User (Privileged)
 
-`/user set_community_rank`
+#### `/user set_community_rank`
 - `<user>`: The user of whom the community rank should be set.
 - `<community_rank>`: The community rank that should be set for the user.
 
@@ -297,7 +299,7 @@ The interacting user's community rank must be higher than the community rank of 
 
 ---
 
-`/user set_jumpedia_rank`
+#### `/user set_jumpedia_rank`
 - `<user>`: The user of whom the jumpedia rank should be set.
 - `<jumpedia_rank>`: The jumpedia rank that should be set for the user.
 
