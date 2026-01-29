@@ -33,13 +33,31 @@ Discord slash commands are currently the only way to interact with Jumpedia. You
 
 Parameters wrapped in `<>` are required, while parameters wralled in `[]` are optional.
 
+### List
+
+#### `/list info`
+- `[list]`: The name of the list. By default the interacting user's selected list, if the user has it set, otherwise the community's default selected list.
+
+Show the name, attributes, task count and whether it is the default selected list of the community for the specified list.
+
+#### `/lists browse`
+
+Show the name, attributes, task count and whether it is the default selected list of the community for all lists in the community.
+
+### List (Privileged)
+
+#### `/list create`
+- `<name>`: The name the new list should have.
+
+The 
+
 ### Attribute
 
 #### `/attribute info`
 - `<attribute>`: The name or alias of the attribute.
 - `[list]`:  The name of the list in which the attribute should be searched for. By default the interacting user's selected list, if the user has it set, otherwise the community's default selected list.
 
-Show the name, aliases, type, slot type, position, min slots, max slots and collection of the specified attribute.
+Show the name, aliases, type, slot type, position, min slot count, max slot count and collection of the specified attribute.
 
 ---
 
@@ -47,7 +65,7 @@ Show the name, aliases, type, slot type, position, min slots, max slots and coll
 - `[type]`: The type to only show attributes of. By default show all types.
 - `[list]`: The name of the list from where the attribute should be taken from. By default the interacting user's selected list, if the user has it set, otherwise the community's default selected list.
 
-Show the name, aliases, type, slot type, position, min slots, max slots and collection of all attributes in the specified list.
+Show the name, aliases, type, slot type, position, min slot count, max slot count and collection of all attributes in the specified list.
 
 ### Attribute (Privileged)
 
@@ -56,11 +74,11 @@ Show the name, aliases, type, slot type, position, min slots, max slots and coll
 - `<type>`: The type the new attribute should have.
 - `<name>`: The name the new attribute should have.
 - `<slot_type>`: The slot type the new attribute should have.
-- `<max_slots>`: The maximum amount of slots the new attribute should have.
+- `<max_slot_count>`: The maximum amount of slots the new attribute should have.
 - `[aliases]`: The aliases the new attribute should have, using [this]() syntax. By default empty.
 - `[collection]` The collection the new attribute should have, using [this]() syntax. By default empty.
 
-Create a new alias with the specified name, type, slot type, max slots, aliases and collection.
+Create a new attribute with the specified name, type, slot type, max slot count, aliases and collection.
 
 The community rank **administrator** is required.
 
@@ -101,12 +119,12 @@ The community rank **administrator** is required.
 
 ---
 
-#### `/attribute edit min_and_max_slots`
+#### `/attribute edit min_and_max_slot_count`
 - `<list>`: The name of the list in which the attribute should be searched for.
 - `<type>`: The type of the attribute.
 - `<attribute>`: The name or alias of the attribute.
-- `<new_min_slots>`: The new minimum slot count to replace the previous minimum slot count of the attribute with.
-- `<new_max_slots>`: The new maximum slot count to replace the previous maximum slot count of the attribute with.
+- `<new_min_slot_count>`: The new minimum slot count to replace the previous minimum slot count of the attribute with.
+- `<new_max_slot_count>`: The new maximum slot count to replace the previous maximum slot count of the attribute with.
 
 Replace the previous minimum and maximum slot count of the specified attribute with the ones specified.
 If the specified attribute is a task attribute, all tasks' values in the specified list for the specified attribute must fit the new bounds, otherwise the values must be manually adjusted beforehand.
@@ -162,7 +180,7 @@ Show all static and task attribute values of all tasks in the specified list, wi
 - `[sort]`: The sort, using [this]() syntax, to apply to all tasks of the specified list. By default sort by the static attribute `name`.
 - `[yield]`: The yield, using [this]() syntax, to apply to all tasks of the specified list. By default the static attribute `name`, all attributes used in the `[filter]` and `[sort]` and all user attributes are yielded.
 - `[given]`: Whether to only show the tasks a user has been given or to only show the tasks a user is missing. By default true (show only the given tasks).
-- `[user]`: The user of whom to grab the tasks and their user attribute values from. By default the interacting user.
+- `[user]`: The user of whom to get the tasks and their user attribute values from. By default the interacting user.
 - `[list]`: The name of the list from where the tasks should be taken from. By default the interacting user's selected list, if the user has it set, otherwise the community's default selected list.
 
 Show all static, task and user attribute values of all tasks in the specified list the specified user has been given, with the possibility to set a filter, sort and yield. 
@@ -265,14 +283,14 @@ Show the name, selected list and ranks of all users in the community.
 ---
 
 #### `/users browse_task`
-- `<task>`: The name or alias of the task for which the user attribute values should be taken from.
+- `<task>`: The name or alias of the task of which the user attribute values should be taken from.
 - `[given]`: Whether to only show the users that have been given the task or to only show the users that are missing it. By default true (show only the users with the task given). 
 - `[list]`: The name of the list in which the task should be searched for. By default the interacting user's selected list, if the user has it set, otherwise the community's default selected list.
 
 **Coming soon...**
 
 Show the name, ranks, selected list and user attribute values of all users in the community that have been given the specified task.
-.......
+If `[given]` is false, only show the users that have not yet been given the task (and therefore don't show any user attributes either).
 
 ---
 
@@ -281,7 +299,6 @@ Show the name, ranks, selected list and user attribute values of all users in th
 - `[user]`: The user for whom the list should be set as the default. By default the interacting user.
 
 Set the selected list of the specified user. This is the list that is automatically selected whenever that user executes a command with a `[list]` parameter, but doesn't explicitly specify it.
-If the user has no selected list yet or unsets it, in case of executing such a command, it will fallback to the community's `default selected list`. If that is also unset, an error will appear that tells the interacting user to sepcify a list explicitly. 
 
 If the specified user is somebody other than the interacting user, the community rank **moderator** is required.
 
