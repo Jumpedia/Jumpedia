@@ -109,9 +109,8 @@ The community rank **administrator** is required.
 - `<new_max_slots>`: The new maximum slot count to replace the previous maximum slot count of the attribute with.
 
 Replace the previous minimum and maximum slot count of the specified attribute with the ones specified.
-If the specified attribute is a task attribute, all tasks' values in the specified list for the specified must fit the new bounds, otherwise the values must be manually adjusted beforehand.
-If the specified attribute is a user attribute, **none** of the users' values in the specified list for the specified attribute are required to fit the new bounds. Values set from that point onwards must
-match the new bounds though.
+If the specified attribute is a task attribute, all tasks' values in the specified list for the specified attribute must fit the new bounds, otherwise the values must be manually adjusted beforehand.
+If the specified attribute is a user attribute, **none** of the users' values in the specified list for the specified attribute are required to fit the new bounds. Values set from that point onwards must match the new bounds though.
 
 The community rank **administrator** is required.
 
