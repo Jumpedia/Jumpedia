@@ -1,5 +1,5 @@
 # Jumpedia
-In simple words, Jumpedia is a system that makes it easy for communities to create and manage tasks, which users in the community can then try to complete and easily manage.
+In simple words, Jumpedia is a Discord bot that makes it easy for communities to create and manage so called "tasks", which are the objectives the users of the community try to complete and collect.
 
 ## Quick Guides
 This whole documentation can be overwhelming, and we know that! This category's purpose is to make it easier for users to find the information they need.
