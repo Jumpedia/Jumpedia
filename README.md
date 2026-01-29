@@ -41,6 +41,8 @@ Parameters wrapped in `<>` are required, while parameters wralled in `[]` are op
 
 Show the name, aliases, type, slot type, position, min slots, max slots and collection of the specified attribute.
 
+---
+
 #### `/attributes browse`
 - `[type]`: The type to only show attributes of. By default show all types.
 - `[list]`: The name of the list from where the attribute should be taken from. By default the interacting user's selected list, if the user has it set, otherwise the community's default selected list.
@@ -61,6 +63,8 @@ Show the name, aliases, type, slot type, position, min slots, max slots and coll
 Create a new alias with the specified name, type, slot type, max slots, aliases and collection.
 
 The community rank **administrator** is required.
+
+---
 
 #### `/attribute nuke`
 - `<list>`: The name of the list in which the attribute should be searched for.
