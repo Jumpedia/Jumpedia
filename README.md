@@ -4,7 +4,8 @@ In simple words, Jumpedia is a Discord bot that makes it easy for communities to
 ## Quick Guides
 This whole documentation can be overwhelming, and we know that! This category's purpose is to make it easier for users to find the information they need.
 
-**Attention:** All guides listed below are ordered from simplest to most advanced. For every guide, it is recommended to read and understand the previous (upper) guides first, even those not in the same category!
+> [!IMPORTANT]
+> All guides listed below are ordered from simplest to most advanced. For every guide, it is recommended to read and understand the previous (upper) guides first, even those not in the same category!
 
 If you want to create or connect a community, continue [here](#createconnect-a-community).
 
@@ -31,7 +32,7 @@ If you want to create a community, you will have to be patient for just a tiny b
 ## Slash Commands
 Discord slash commands are currently the only way to interact with Jumpedia. You can use them by being on a Discord server in which the Jumpedia bot is also on.
 
-Parameters wrapped in `<>` are required, while parameters wralled in `[]` are optional.
+Parameters wrapped in `<>` are required, while parameters wrapped in `[]` are optional.
 
 ### Community
 
@@ -82,7 +83,7 @@ The server rank **owner** is required.
 
 ---
 
-#### `/community set_default_selected_list`
+#### `/community edit default_selected_list`
 - `[list]`: The name of the list. If not specified, the default selected list of the community will be unset.
 
 Set the default selected list of the community. If no list is specified, the community's default selected list is unset.
@@ -373,7 +374,7 @@ If `[given]` is false, only show the users that have not yet been given the task
 
 ---
 
-#### `/user set_selected_list`
+#### `/user edit_selected_list`
 - `[list]`: The name of the list that should be set as the default. If not specified, this will unset the user's selected list.
 - `[user]`: The user for whom the list should be set as the default. By default the interacting user.
 
@@ -383,7 +384,7 @@ If the specified user is somebody other than the interacting user, the community
 
 ### User (Privileged)
 
-#### `/user set_community_rank`
+#### `/user edit_community_rank`
 - `<user>`: The user of whom the community rank should be set.
 - `<community_rank>`: The community rank that should be set for the user.
 
@@ -393,7 +394,7 @@ The interacting user's community rank must be higher than the community rank of 
 
 ---
 
-#### `/user set_jumpedia_rank`
+#### `/user edit_jumpedia_rank`
 - `<user>`: The user of whom the jumpedia rank should be set.
 - `<jumpedia_rank>`: The jumpedia rank that should be set for the user.
 
@@ -401,9 +402,12 @@ Set the specified user's jumpedia rank to the one specified.
 
 The interacting user's jumpedia rank must be higher than the jumpedia rank of the specified user and the interacting user may only set the jumpedia rank of the specified user to a jumpedia rank lower than their own.
 
-## Concepts
+## Structures
 
 ### Community
+A community is the structure that stores all information about your, well, community. Every Discord server with the Jumpedia bot on it can be [connected](#community-connect) to one community at a time, but the amount of Discord servers that can be connected to a community it limitless. This way, a Discord server represents one community, but the community can be used across other servers as well, if required.
+
+Every community has any amount of [lists](#list). One of these lists may be selected as the default,
 
 ### List
 
