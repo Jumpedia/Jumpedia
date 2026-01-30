@@ -33,12 +33,70 @@ Discord slash commands are currently the only way to interact with Jumpedia. You
 
 Parameters wrapped in `<>` are required, while parameters wralled in `[]` are optional.
 
+### Community
+
+#### `/community info`
+
+Show the name, lists, default selected list, connected server count and limits of the community.
+
+---
+
+#### `/communities browse`
+
+Show the name, lists, default selected list, connected server count and limits for all communities of Jumpedia.
+
+### Community (Privileged)
+
+#### `/community create`
+- `<name>`: The name the new community should have.
+- `[default_selected_list_name]`: The name of the list that should automatically be created with the community and also set as the default selected list. By default don't create it.
+
+Create a new community with the specified name and if specified create a default selected list. 
+
+The jumpedia rank **meta administrator** is required.
+
+---
+
+#### `/community nuke`
+
+Delete the community. This will also delete all associated lists and all of their associated data! 
+
+The community rank **owner** is required.
+
+---
+
+#### `/community connect`
+- `<community>`: The name of the community.
+
+Connect the Discord server the command is executed in to the specified community.
+
+The server rank **owner** is required.
+
+---
+
+#### `/community disconnect`
+
+Disconnect the Discord server the command is executed in from the connected community.
+
+The server rank **owner** is required.
+
+---
+
+#### `/community set_default_selected_list`
+- `[list]`: The name of the list. If not specified, the default selected list of the community will be unset.
+
+Set the default selected list of the community. If no list is specified, the community's default selected list is unset.
+
+The community rank **administrator** is required.
+
 ### List
 
 #### `/list info`
 - `[list]`: The name of the list. By default the interacting user's selected list, if the user has it set, otherwise the community's default selected list.
 
 Show the name, attributes, task count and whether it is the default selected list of the community for the specified list.
+
+---
 
 #### `/lists browse`
 
@@ -49,7 +107,28 @@ Show the name, attributes, task count and whether it is the default selected lis
 #### `/list create`
 - `<name>`: The name the new list should have.
 
-The 
+Create a new list with the specified name. With its creation it also automatically creates the static attributes "Id", "Name" and "Alias".
+
+The community rank **administrator** is required.
+
+---
+
+#### `/list nuke`
+- `<list>`: The name of the list.
+
+Delete the specified list. This will also deleted all associated tasks, attributes, and all of their associated data as well!
+
+The community rank **administrator** is required.
+
+---
+
+#### `/list edit name`
+- `<list>`: The name of the list.
+- `<new_name>`: The new name the list should be renamed to.
+
+Rename the specified list. 
+
+The community rank **administrator** is required.
 
 ### Attribute
 
