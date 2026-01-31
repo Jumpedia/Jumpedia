@@ -1,5 +1,5 @@
 # Jumpedia
-In simple words, Jumpedia is a Discord bot that makes it easy for communities to create and manage so called "tasks", which are the objectives the users of the community try to complete and collect.
+In simple words, Jumpedia is a Discord bot that makes it easy for communities to create and manage so called "tasks", which are objectives the users of the community try to complete and collect.
 
 ## Quick Guides
 This whole documentation can be overwhelming, and we know that! This category's purpose is to make it easier for users to find the information they need.
@@ -405,11 +405,12 @@ The interacting user's jumpedia rank must be higher than the jumpedia rank of th
 ## Structures
 
 ### Community
-A community is the structure that stores all information about your, well, community. Every Discord server with the Jumpedia bot on it can be [connected](#community-connect) to one community at a time, but the amount of Discord servers that can be connected to a community it limitless. This way, a Discord server represents one community, but the community can be used across other servers as well, if required.
+A community is the structure that stores all information about your, well, community. Every Discord server with the Jumpedia bot on it can be [connected](#community-connect) to one community at a time, but the amount of Discord servers that can be connected to a community it limitless. This way, a Discord server may only represent one specific community, but the community may also spread across multiple Discord servers, if required.
 
-Every community has any amount of [lists](#list). One of these lists may be selected as the default,
+Every community has any amount of [lists](#list). One of these lists may be [selected as the default](#community-edit-default_selected_list). When a user doesn't have a list selected themselves and they don't explicitly specify one in a command, the community's default will be used.
 
 ### List
+A list is the structure that holds tasks and attributes. It can be viewed as a spreadsheet, where the attributes are the columns  and the tasks are the rows. 
 
 ### Attribute
 
