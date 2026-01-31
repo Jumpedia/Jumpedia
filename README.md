@@ -1,33 +1,10 @@
 # Jumpedia
 In simple words, Jumpedia is a Discord bot that makes it easy for communities to create and manage so called "tasks", which are objectives the users of the community try to complete and collect.
 
-## Quick Guides
-This whole documentation can be overwhelming, and we know that! This category's purpose is to make it easier for users to find the information they need.
+## Connect Or Create A Community
+If you want to connect an existing community to a Discord server you own, [click here]() to invite the Jumpedia Discord bot to your server and then use the [community connect](#community-connect) command to actually connect the specfic community to your server.
 
-> [!IMPORTANT]
-> All guides listed below are ordered from simplest to most advanced. For every guide, it is recommended to read and understand the previous (upper) guides first, even those not in the same category!
-
-If you want to create or connect a community, continue [here](#createconnect-a-community).
-
-### Community User Guides
-These guides are for basic community users that aren't part of staff. 
-- **Newcomer's Guide:** link
-- **Regular's Guide:** link
-
-### Community Staff Guides
-These guides are recommended for users who got promoted to a new rank inside of a community.
-- **Helper's Guide:** link
-- **Moderator's Guide:** link
-- **Administrator's Guide:** link
-- **Owner's Guide:** link
-
-### Jumepedia Staff Guides
-- **Meta Administrator's Guide:** link
-
-## Create/Connect a Community
-If you want to connect an existing community to your Discord server, [click here]() to invite the Jumpedia Discord bot to your server and then use the [community connect](#community-connect) command to actually connect the specfic community to your server.
-
-If you want to create a community, you will have to be patient for just a tiny bit longer. Jumpedia is currently in its stress testing phase in the "SMO Trickjumping" community and will be available to other communities in the coming updates (approx. March 2026).
+If you want to create a community, you will have to be patient for a bit longer. Jumpedia is currently in its stress testing phase and will be available to other communities soon. If you still want to experimentally use Jumpedia for your community, DM [@jonikauf](https://discord.com/users/679564566769827841) on Discord.
 
 ## Slash Commands
 Discord slash commands are currently the only way to interact with Jumpedia. You can use them by being on a Discord server in which the Jumpedia bot is also on.
@@ -220,11 +197,11 @@ The community rank **administrator** is required.
 - `<attribute>`: The name or alias of the attribute.
 - `<collection>`: The new collection to replace the previous collection of the attribute with, using [this]() syntax.
 
-**Coming soon...**
-
 Replace the previous collection of the specified attribute with the one specified.
 
 The community rank **administrator** is required.
+
+**Coming soon...**
 
 ### Task
 
@@ -356,9 +333,9 @@ Show the name, selected list and ranks of the specified user. If the command is 
 
 #### `/users browse`
 
-**Coming soon...**
-
 Show the name, selected list and ranks of all users in the community.
+
+**Coming soon...**
 
 ---
 
@@ -367,10 +344,10 @@ Show the name, selected list and ranks of all users in the community.
 - `[given]`: Whether to only show the users that have been given the task or to only show the users that are missing it. By default true (show only the users with the task given). 
 - `[list]`: The name of the list in which the task should be searched for. By default the interacting user's selected list, if the user has it set, otherwise the community's default selected list.
 
-**Coming soon...**
-
 Show the name, ranks, selected list and user attribute values of all users in the community that have been given the specified task.
 If `[given]` is false, only show the users that have not yet been given the task (and therefore don't show any user attributes either).
+
+**Coming soon...**
 
 ---
 
@@ -407,16 +384,159 @@ The interacting user's jumpedia rank must be higher than the jumpedia rank of th
 ### Community
 A community is the structure that stores all information about your, well, community. Every Discord server with the Jumpedia bot on it can be [connected](#community-connect) to one community at a time, but the amount of Discord servers that can be connected to a community it limitless. This way, a Discord server may only represent one specific community, but the community may also spread across multiple Discord servers, if required.
 
-Every community has any amount of [lists](#list). One of these lists may be [selected as the default](#community-edit-default_selected_list). When a user doesn't have a list selected themselves and they don't explicitly specify one in a command, the community's default will be used.
+Every community has any amount of [lists](#list2). One of these lists may be [selected as the default](#community-edit-default_selected_list). When a user doesn't have a list selected themselves and they don't explicitly specify one in a command, the community's default will be used.
 
 ### List
-A list is the structure that holds tasks and attributes. It can be viewed as a spreadsheet, where the attributes are the columns  and the tasks are the rows. 
+A list is the structure that holds tasks and attributes. It can be compared to a spreadsheet, where the attributes are the columns and the tasks are the rows.
+
+Here is an example:
+
+Id  | Name               | Alias               | Difficulty
+----|--------------------|---------------------|-----------
+`1` | `Do your homework` | `Homework`<br/>`HW` | `9/10`
+`2` | `Do the laundry`   | `Laundry`           | `5/10`
+
+This also exactly how the [task browse](#task-browse) command previews data.
+
 
 ### Attribute
+An attribute is the "column" that describes which kind of data a task may contain (see the table above) in each cell of a task's row. 
+
+All attributes have the following properties...
+
+#### Name
+The primary identifier of the attribute. It must be unique across all other attributes' names and aliases in the same list.
+
+#### Alias
+Secondary identifiers of the attribute. They must be unique across all other attributes' names and aliases in the same list.
+
+#### Slot Type
+The type each slot of a task's value must fit. May be either `Boolean (true/false)`, `Integer`, `Decimal` or `String (Text)`. 
+
+#### Position
+A number which attributes are ordered by when using the [task info](#task-info) or [task browse](#task-browse) command. Currently not editable, but coming soon...
+
+#### Min Slot Count
+The minimum amount of slots each value of a task may have for this attribute. When [creating an attribute](#attribute-create), this is forced to be 0, but may be [edited](#attribute-edit-min_and_max_slot_count) after creation.
+
+#### Max Slot Count
+The maximum amount of slots each value of a task may have for this attribute.
+
+#### Collection 
+A set of all allowed slots a task can have for this attribute.
+Each entry of the collection contains a value and aliases for that value. 
+Currently not editable, but coming soon... (high priority)
+
+#### Type 
+Each attribute also has a type. This is listed as the last property here because it requires knowledge of te previous properties. The three types are:
+
+##### Static Attribute
+A static attribute is a special kind of attribute. It cannot manually be created or deleted, but edited in a few limited ways. Whenever a list is created, the three static attributes `Id`, `Name` and `Alias` get created automatically as well. 
+
+For the static attribute `Id` every task has completely unique positive integer value, that is automatically assigned on creation of said task. No two tasks across all of Jumpedia ever share the same ID. 
+
+The static attributes `Name` and `Alias` work the same way the properties `Name` and `Alias` do for attributes. `Name` is the primary identifier to lookup tasks with, while `Alias` includes all secondary identifiers. All names and aliases must be unique across a list.
+
+Here are the default properties of all static attributes:
+Name    | Alias | Type               | Slot Type       | Position | Min Slot Count | Max Slot Count    | Collection
+--------|-------|--------------------|-----------------|----------|----------------|-------------------|-----------
+`Id`    |       | `Static Attribute` | `Integer`       | `1`      | `1`            | `1`               |
+`Name`  |       | `Static Attribute` | `String (Text)` | `2`      | `1`            | `1`               |
+`Alias` |       | `Static Attribute` | `String (Text)` | `3`      | `1`            | Community's Max   |
+
+
+###### Task Attribute
+A task attribute is similar to a static attribute, but it doesn't have special treatment. It can be created, edited and deleted as required. 
+
+For example, a list might contain the following task attribute:
+Name         | Alias | Type             | Slot Type | Position | Min Slot Count | Max Slot Count | Collection         
+-------------|-------|------------------|-----------|----------|----------------|----------------|---------------------
+`Difficulty` | `D`   | `Task Attribute` | `Integer` | 4        | 1              | 1              | (`1`)<br/>(`2`)<br/>(`3`)<br/>(`4`)<br/>(`5`)
+
+This task attribute has the following properties:
+- The attribute's name is `Difficulty` and it has one alias, `D`. 
+- It is (obviously) a task attribute.
+- It requires all slots in a task's value to be an integer, but due to it having a collection also requires any value to be exactly either `1`, `2`, `3`, `4` or `5`.
+- It is sorted after the attribute with the position `3` and before the attribute with the position `5`.
+- A task's value for this attribute has exactly one slot, because the min and max slot count is 1.
+
+In a nutshell: A task is required (min slot count > 0) to have a value with exactly one slot consisting of any integer from 1 to 5 for this task attribute.
+
+The task attribute contains one value per task, unlike user attributes...
+
+###### User Attribute
+A user attribute is an attribute that contains one value per task per user. In other words: it lets each user assign their own value to tasks they completed and then [give themselves](#task-give).
+
+For example, a list might contain the following user attribute:
+Name    | Alias           | Type             | Slot Type       | Position | Min Slot Count | Max Slot Count | Collection         
+--------|-----------------|------------------|-----------------|----------|----------------|----------------|---------------------
+`Proof` | `Prove`<br/>`P` | `User Attribute` | `String (Text)` | 12       | 0              | 2              |
+
+This user attribute has the following properties:
+- The attribute's name is `Proof` and it has the aliases `Prove` and `P`. 
+- It is (obviously) a user attribute.
+- It requires all slots in a task's value to be any kind of text.
+- It is sorted after the attribute with the position `11` and before the attribute with the position `13`.
+- A user's value for this attribute must contain 0 to 2 slots (inclusive). 
+
+In a nutshell: When a user [gives themselves a task](#task-give), they can decide to either set no proof or to add up to 2 proof links for this user attribute. The proof may be any kind of string, with no restrictions.
+
 
 ### Task
-Tasks are the "thing" users in the community should aim to complete. This can be anything from challenges, speedruns, trickjumps, quests or anything else completable. With the `task` command group, users can give themselves completed tasks (and possibly add their own data), browse through the tasks, get detailed information about specific tasks and more!
+Tasks are the thing users in the community should aim to complete. This can be anything from challenges, speedruns, trickjumps, quests or anything else completable.
+
+A task can be thought of as a row in a spreadsheet, while attributes are the columns that describe what kind of value should go into each cell of the task's row.
+
+Whenever a user completes a task, they can use the [task give](#task-give) command to give themselves that specific task. This marks the task as completed for that user.
 
 ### User
-#### Rank
+A user is any person interacting with Jumpedia. Jumpedia stores the following properties about a user:
+- Their Discord ID
+- Their global display name, if given, otherwise their unique @ name.
+
+Users are identified by their Discord ID, so make sure to not lose your Discord account!
+The name is tracked to mention users in messages and it is the last name Jumpedia saw of that user.
+
+For a user inside of specific community, Jumpedia stores additional data:
+- Their selected list 
+- All of their task data
+
+Most importantly, Jumpedia keeps track of users' ranks...
+
+#### Server Rank
+Server ranks are not managed, but only read by Jumpedia. They describe the power a user already has in a Discord server.
+
+The following server ranks exist:
+Name          | Description                                                    | Privileges
+--------------|----------------------------------------------------------------|----------------------------------------------------------------------------------
+User          | Basic user without any privileges                              | None
+Administrator | User that has administrator rights on the given Discord server | Currently none
+Owner         | The owner of a Discord server                                  | [Connect](#community-connect) and [disconnect](#community-disconnect) a community
+
+
+They have no permission across Jumpedia's ecosystem but can be used to manage how Discord servers are able to interact with Jumpedia.
+
+
+#### Community Rank
+A community rank is the rank a user has inside of a specific community.
+
+The following community ranks exist:
+Name          | Description                                                    | Privileges
+--------------|----------------------------------------------------------------|----------------------------------------------------------
+User          | Basic user without any privileges                              | None
+Helper        | User with no destructive power, but the ability to help        | Create tasks
+Moderator     | User with the ability to affect other users and managing power | Edit task data of other users and edit tasks
+Administrator | User with almost full power inside of a community              | Edit everything about the community, lists and attributes
+Owner         | The owner of a community                                       | Delete the community
+
+
+#### Jumpedia Rank
+Jumpedia ranks are the most powerful kind of rank. Users with these ranks are Jumpedia staff and have power across communities. Any Jumpedia rank (besides user) is more powerful than any other kind of rank. This allows Jumpedia staff to support communities that are facing issues immediately.
+
+The following Jumpedia ranks exist:
+Name               | Description                                                     | Privileges
+-------------------|-----------------------------------------------------------------|---------------------------
+User               | Basic user without any privileges                               | None
+Meta Administrator | User with full power across all of Jumpedia and its communities | All of them
+JoniKauf           | The rank of JoniKauf                                            | Manage meta administrators
 
