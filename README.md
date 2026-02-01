@@ -7,7 +7,7 @@ In simple words, Jumpedia is a Discord bot that makes it easy for communities to
 
 
 ## Connect or Create a Community
-If you want to connect an existing community to a Discord server you own, [click here]() to invite the Jumpedia Discord bot to your server and then use the [community connect](#community-connect) command to actually connect the specific community to your server.
+If you want to connect an existing community to a Discord server you own, [click here](https://discord.com/oauth2/authorize?client_id=1467573198622036145&permissions=4503599627447360&integration_type=0&scope=bot) to invite the Jumpedia Discord bot to your server and then use the [community connect](#community-connect) command to actually connect the specific community to your server.
 
 If you want to create a community, you will have to be patient for a bit longer. Jumpedia is currently in its stress testing phase and will be available to other communities soon. If you still want to experimentally use Jumpedia for your community, DM [@jonikauf](https://discord.com/users/679564566769827841) on Discord.
 
