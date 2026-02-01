@@ -1,8 +1,13 @@
 # Jumpedia
 In simple words, Jumpedia is a Discord bot that makes it easy for communities to create and manage so called "tasks", which are objectives the users of the community try to complete and collect.
 
-## Connect Or Create A Community
-If you want to connect an existing community to a Discord server you own, [click here]() to invite the Jumpedia Discord bot to your server and then use the [community connect](#community-connect) command to actually connect the specfic community to your server.
+## About this documentation
+> [!IMPORTANT]
+> This documentation covers the most important parts, but is not polished yet and is missing some smaller details. For any questions, visit the Jumpedia Discord server: https://discord.gg/S4hPp6PWWr
+
+
+## Connect or Create a Community
+If you want to connect an existing community to a Discord server you own, [click here]() to invite the Jumpedia Discord bot to your server and then use the [community connect](#community-connect) command to actually connect the specific community to your server.
 
 If you want to create a community, you will have to be patient for a bit longer. Jumpedia is currently in its stress testing phase and will be available to other communities soon. If you still want to experimentally use Jumpedia for your community, DM [@jonikauf](https://discord.com/users/679564566769827841) on Discord.
 
@@ -31,7 +36,7 @@ Show the name, lists, default selected list, connected server count and limits f
 
 Create a new community with the specified name and if specified create a default selected list. 
 
-The jumpedia rank **meta administrator** is required.
+The Jumpedia rank **meta administrator** is required.
 
 ---
 
@@ -94,7 +99,7 @@ The community rank **administrator** is required.
 #### `/list nuke`
 - `<list>`: The name of the list.
 
-Delete the specified list. This will also deleted all associated tasks, attributes, and all of their associated data as well!
+Delete the specified list. This will also delete all associated tasks, attributes, and all of their associated data as well!
 
 The community rank **administrator** is required.
 
@@ -132,8 +137,8 @@ Show the name, aliases, type, slot type, position, min slot count, max slot coun
 - `<name>`: The name the new attribute should have.
 - `<slot_type>`: The slot type the new attribute should have.
 - `<max_slot_count>`: The maximum amount of slots the new attribute should have.
-- `[aliases]`: The aliases the new attribute should have, using [this]() syntax. By default empty.
-- `[collection]` The collection the new attribute should have, using [this]() syntax. By default empty.
+- `[aliases]`: The aliases the new attribute should have, using [this](#alias-syntax) syntax. By default empty.
+- `[collection]`: The collection the new attribute should have, using [this](#mapping-syntax) syntax to describe names mapping to aliases. By default empty.
 
 Create a new attribute with the specified name, type, slot type, max slot count, aliases and collection.
 
@@ -168,7 +173,7 @@ The community rank **administrator** is required.
 - `<list>`: The name of the list in which the attribute should be searched for.
 - `<type>`: The type of the attribute.
 - `<attribute>`: The name or alias of the attribute.
-- `<new_aliases>`: The new aliases to replace the previous aliases of the attribute with, using [this]() syntax.
+- `<new_aliases>`: The new aliases to replace the previous aliases of the attribute with, using [this](#alias-syntax) syntax.
 
 Replace the previous aliases of the specified attribute with the ones specified.
 
@@ -195,7 +200,7 @@ The community rank **administrator** is required.
 - `<list>`: The name of the list in which the attribute should be searched for.
 - `<type>`: The type of the attribute.
 - `<attribute>`: The name or alias of the attribute.
-- `<collection>`: The new collection to replace the previous collection of the attribute with, using [this]() syntax.
+- `<collection>`: The new collection to replace the previous collection of the attribute with, using [this](#mapping-syntax) syntax to describe names mapping to aliases.
 
 Replace the previous collection of the specified attribute with the one specified.
 
@@ -223,9 +228,9 @@ Show all static, task and user attribute values of the specified task. The user 
 ---
 
 #### `/tasks browse`
-- `[filter]`: The filter, using [this]() syntax, to apply to all tasks of the specified list. If not specified, no filter is applied.
-- `[sort]`: The sort, using [this]() syntax, to apply to all tasks of the specified list. If not specified, sort by the static attribute `name`.
-- `[yield]`: The yield, using [this]() syntax, to apply to all tasks of the specified list. If not specified, the static attribute `name` and all attributes used in the `[filter]` and `[sort]` will be yielded.
+- `[filter]`: The filter, using [this](#filter-syntax) syntax, to apply to all tasks of the specified list. If not specified, no filter is applied.
+- `[sort]`: The sort, using [this](#sort-syntax) syntax, to apply to all tasks of the specified list. If not specified, sort by the static attribute `name`.
+- `[yield]`: The yield to apply to all tasks of the specified list. If not specified, the static attribute `name` and all attributes used in the `[filter]` and `[sort]` will be yielded.
 - `[list]`: The name of the list from where the task should be taken from. By default the interacting user's selected list, if the user has it set, otherwise the community's default selected list.
 
 Show all static and task attribute values of all tasks in the specified list, with the possibility to set a filter, sort and yield.
@@ -233,9 +238,9 @@ Show all static and task attribute values of all tasks in the specified list, wi
 ---
 
 #### `/tasks browse_user`
-- `[filter]`: The filter, using [this]() syntax, to apply to all tasks of the specified list. By default no filter is applied.
-- `[sort]`: The sort, using [this]() syntax, to apply to all tasks of the specified list. By default sort by the static attribute `name`.
-- `[yield]`: The yield, using [this]() syntax, to apply to all tasks of the specified list. By default the static attribute `name`, all attributes used in the `[filter]` and `[sort]` and all user attributes are yielded.
+- `[filter]`: The filter, using [this](#filter-syntax) syntax, to apply to all tasks of the specified list. By default no filter is applied.
+- `[sort]`: The sort, using [this](#sort-syntax) syntax, to apply to all tasks of the specified list. By default sort by the static attribute `name`.
+- `[yield]`: The yield to apply to all tasks of the specified list. By default the static attribute `name`, all attributes used in the `[filter]` and `[sort]` and all user attributes are yielded.
 - `[given]`: Whether to only show the tasks a user has been given or to only show the tasks a user is missing. By default true (show only the given tasks).
 - `[user]`: The user of whom to get the tasks and their user attribute values from. By default the interacting user.
 - `[list]`: The name of the list from where the tasks should be taken from. By default the interacting user's selected list, if the user has it set, otherwise the community's default selected list.
@@ -248,11 +253,11 @@ If `[given]` is false, only show the tasks that have not yet been given to the u
 
 #### `/task give`
 - `<task>`: The name or alias of the task.
-- `[user_attribute_value_mapping]`: User attributes with associated values, using [this]() syntax.
+- `[user_attribute_value_mapping]`: User attributes with associated values, using [this](#mapping-syntax) syntax.
 - `[user]`: The user whom the task is given. By default the interacting user.
 - `[list]`: The name of the list in which the task should be searched for. By default the interacting user's selected list, if the user has it set, otherwise the community's default selected list.
 
-Give the specified task to the specified user. The opposite of the #### `/task take` command below.
+Give the specified task to the specified user. The opposite of the [task take](#task-take) command below.
 
 If the specified user is somebody other than the interacting user, the community rank **moderator** is required. 
 
@@ -263,7 +268,7 @@ If the specified user is somebody other than the interacting user, the community
 - `[user]`: The user from whom the task is taken away. By default the interacting user.
 - `[list]`: The name of the list in which the task should be searched for. By default the interacting user's selected list, if the user has it set, otherwise the community's default selected list.
 
-Take away the specified task from the specified user. The opposite of the #### `/task give` command above.
+Take away the specified task from the specified user. The opposite of the [task give](#task-give) command above.
 
 If the specified user is somebody other than the interacting user, the community rank **moderator** is required. 
 
@@ -272,8 +277,8 @@ If the specified user is somebody other than the interacting user, the community
 #### `/task create` 
 - `<list>`: The name of the list in which the task should be created in.
 - `<name>`: The name the new task should have.
-- `[aliases]`: The aliases the new task should have, using [this]() syntax. By default empty.
-- `[task_attribute_value_mapping]`: Task attributes with associated values, using [this]() syntax. By default empty.
+- `[aliases]`: The aliases the new task should have, using [this](#alias-syntax) syntax. By default empty.
+- `[task_attribute_value_mapping]`: Task attributes with associated values, using [this](#mapping-syntax) syntax. By default empty.
 
 Create a new task with the specified name, aliases and task attribute value mapping. 
 
@@ -305,7 +310,7 @@ The community rank **moderator** is required.
 #### `/task edit aliases`
 - `<list>`: The name of the list in which the task should be searched for.
 - `<task>`: The name or alias of the task.
-- `<new_aliases>`: The new aliases to replace the previous aliases of the task with, using [this]() syntax.
+- `<new_aliases>`: The new aliases to replace the previous aliases of the task with, using [this](#alias-syntax) syntax.
 
 Replace the previous aliases of the specified task with the ones specified.
 
@@ -313,10 +318,10 @@ The community rank **moderator** is required.
 
 ---
 
-#### `/task edit edit_attribute_value_mapping`
+#### `/task edit attribute_value_mapping`
 - `<list>`: The name of the list in which the task should be searched for.
 - `<task>`: The name or alias of the task.
-- `[new_attribute_value_mapping]`: The new task attribute value mapping to replace the previous task attribute value mapping of the task with, using [this]() syntax. By default empty.
+- `[new_attribute_value_mapping]`: The new task attribute value mapping to replace the previous task attribute value mapping of the task with, using [this](#mapping-syntax) syntax. By default empty.
 
 Replace the previous task attribute value mapping of the specified task with the one specified.
 
@@ -372,19 +377,19 @@ The interacting user's community rank must be higher than the community rank of 
 ---
 
 #### `/user edit_jumpedia_rank`
-- `<user>`: The user of whom the jumpedia rank should be set.
-- `<jumpedia_rank>`: The jumpedia rank that should be set for the user.
+- `<user>`: The user of whom the Jumpedia rank should be set.
+- `<jumpedia_rank>`: The Jumpedia rank that should be set for the user.
 
-Set the specified user's jumpedia rank to the one specified.
+Set the specified user's Jumpedia rank to the one specified.
 
-The interacting user's jumpedia rank must be higher than the jumpedia rank of the specified user and the interacting user may only set the jumpedia rank of the specified user to a jumpedia rank lower than their own.
+The interacting user's Jumpedia rank must be higher than the Jumpedia rank of the specified user and the interacting user may only set the Jumpedia rank of the specified user to a Jumpedia rank lower than their own.
 
 ## Structures
 
 ### Community
-A community is the structure that stores all information about your, well, community. Every Discord server with the Jumpedia bot on it can be [connected](#community-connect) to one community at a time, but the amount of Discord servers that can be connected to a community it limitless. This way, a Discord server may only represent one specific community, but the community may also spread across multiple Discord servers, if required.
+A community is the structure that stores all information about your, well, community. Every Discord server with the Jumpedia bot on it can be [connected](#community-connect) to one community at a time, but the amount of Discord servers that can be connected to a community is limitless. This way, a Discord server may only represent one specific community, but the community may also spread across multiple Discord servers, if required.
 
-Every community has any amount of [lists](#list2). One of these lists may be [selected as the default](#community-edit-default_selected_list). When a user doesn't have a list selected themselves and they don't explicitly specify one in a command, the community's default will be used.
+Every community has any amount of lists. One of these lists may be [selected as the default](#community-edit-default_selected_list). When a user doesn't have a list selected themselves and they don't explicitly specify one in a command, the community's default will be used.
 
 ### List
 A list is the structure that holds tasks and attributes. It can be compared to a spreadsheet, where the attributes are the columns and the tasks are the rows.
@@ -396,7 +401,7 @@ Id  | Name               | Alias               | Difficulty
 `1` | `Do your homework` | `Homework`<br/>`HW` | `9/10`
 `2` | `Do the laundry`   | `Laundry`           | `5/10`
 
-This also exactly how the [task browse](#task-browse) command previews data.
+This is also exactly how the [task browse](#task-browse) command previews data.
 
 
 ### Attribute
@@ -428,7 +433,7 @@ Each entry of the collection contains a value and aliases for that value.
 Currently not editable, but coming soon... (high priority)
 
 #### Type 
-Each attribute also has a type. This is listed as the last property here because it requires knowledge of te previous properties. The three types are:
+Each attribute also has a type. This is listed as the last property here because it requires knowledge of the previous properties. The three types are:
 
 ##### Static Attribute
 A static attribute is a special kind of attribute. It cannot manually be created or deleted, but edited in a few limited ways. Whenever a list is created, the three static attributes `Id`, `Name` and `Alias` get created automatically as well. 
@@ -497,7 +502,7 @@ A user is any person interacting with Jumpedia. Jumpedia stores the following pr
 Users are identified by their Discord ID, so make sure to not lose your Discord account!
 The name is tracked to mention users in messages and it is the last name Jumpedia saw of that user.
 
-For a user inside of specific community, Jumpedia stores additional data:
+For a user inside of a specific community, Jumpedia stores additional data:
 - Their selected list 
 - All of their task data
 
@@ -545,9 +550,9 @@ JoniKauf           | The rank of JoniKauf                                       
 ## Syntax
 For some command parameters more than just a single value is required to be entered. For this reason, multiple syntaxes exist to fit the shape of the data that is required.
 
-For any syntax requiring to input attributes or collection values.
+For any syntax that requires inputting attributes or collection values, their aliases may be used as well.
 
-> [!IPORTANT]
+> [!IMPORTANT]
 > Whenever it is required to only enter a single value into a parameter, like a `name` for example, the user must type it without any quotation marks or other special symbols. Otherwise, these special symbols are included in the actual data.
 
 Every syntax has the same basic rules:
@@ -607,7 +612,7 @@ If escaping is done incorrectly, an error will be returned.
 > - `'They called him "Mark"'`
 
 ### Alias Syntax
-The alias syntax allows the user to input one to n aliases. 
+The alias syntax allows the user to input one to any number of aliases.
 
 #### Special symbols or keywords:
 This syntax has no additional special symbols or keywords. 
@@ -627,7 +632,7 @@ A task with this string in `aliases` specified will have the following aliases:
 
 
 ### Mapping Syntax
-The mapping syntax allows the user to input anything that associates a unique key to 0 to n values. For example, when a user [gives themselves a task](#user-give), they can use this syntax to specify their user attribute value mapping.
+The mapping syntax allows the user to input anything that associates a unique key with zero or more values. For example, when a user [gives themselves a task](#user-give), they can use this syntax to specify their user attribute value mapping.
 
 #### Special symbols or keywords:
 This syntax additionally has the special symbols `(`, `)` and `:`, but no keywords.
@@ -641,7 +646,7 @@ Every key-value pair is wrapped inside of parentheses. The key string comes firs
 The example above represents a user attribute value mapping when a user gives themselves a task.
 - To the user attribute `Proof` they assigned two pseudo proofs
 - To the user attribute `Rating` they assigned one rating, `5/5 Stars`
-- To the user attribute `Notes` they assigned nothing (could have been left out entirely, or they could have additionaly included a colon (`:`) after `Notes`).
+- To the user attribute `Notes` they assigned nothing (could have been left out entirely, or they could have additionally included a colon (`:`) after `Notes`).
 
 ### Sort Syntax
 The sort syntax allows the user to input a sort for when they are browsing tasks.
@@ -657,11 +662,11 @@ Plus (`+`) means to sort by that attribute in ascending order, while (`-`) means
 #### Example:
 `+Difficulty -Name`
 
-All tasks are sorted by the difficulty in ascending order. All tasks with the same difficulty will be sorted by their name in descending order.
+This example sorts all tasks by difficulty in ascending order. All tasks with the same difficulty will be sorted by their name in descending order.
 
 
 ### Filter Syntax
-The filter syntax is the most powerful syntax and therefore the most complex. It allows the user to filter data in any way they may desire, with compact syntax.
+The filter syntax is the most powerful syntax and therefore the most complex. It allows the user to filter data in any way they may desire, using a compact syntax.
 
 #### Special symbols or keywords:
 This syntax additionally has the special symbols `(`, `)` and `_`. It also has the keywords `and`, `or`, `is`, `is not`, `<`, `<=`, `>` and `>=`.
@@ -670,4 +675,16 @@ This syntax additionally has the special symbols `(`, `)` and `_`. It also has t
 This syntax works by alternating comparisons with boolean operators (`and`, `or`), to represent boolean logic that should be checked for each task. A comparison is an attribute, followed by a comparison operator (`is`, `is not`, `<`, `<=`, `>`, `>=`), followed by a value. The underscore (`_`), called the empty value symbol, can be used with the operators `is` and `is not` to check whether a task's value is empty. Parenthesis (`()`) can be used around a singular or multiple comparisons to change in which order boolean operators are applied, similar to how they are used in maths. By default, the `and` boolean operator has a higher precedence than the `or` boolean operator.
 
 #### Example:
-`(Difficulty < 9/10 or Name > Y) and Link >=`
+`(Difficulty < 9/10 or Name >= Y) and (Proof is not _)`
+
+For a task to **not** be filtered out, the following must be true:
+The difficulty must be lower than 9/10 OR the name must be lexicographically higher than `Y` or exactly equal to `Y`. If that is the case AND proof is also non-empty, only then will the task be included.
+
+
+## Credits
+A huge thanks to the following people for helping me on the way to build Jumpedia:
+- xKilimili
+- Xeter
+- Jess
+- The SMO Trickjumping staff team
+- And many more...
