@@ -540,3 +540,134 @@ User               | Basic user without any privileges                          
 Meta Administrator | User with full power across all of Jumpedia and its communities | All of them
 JoniKauf           | The rank of JoniKauf                                            | Manage meta administrators
 
+
+
+## Syntax
+For some command parameters more than just a single value is required to be entered. For this reason, multiple syntaxes exist to fit the shape of the data that is required.
+
+For any syntax requiring to input attributes or collection values.
+
+> [!IPORTANT]
+> Whenever it is required to only enter a single value into a parameter, like a `name` for example, the user must type it without any quotation marks or other special symbols. Otherwise, these special symbols are included in the actual data.
+
+Every syntax has the same basic rules:
+
+#### 1. Special Symbols
+
+All syntaxes share a common set of special symbols, though individual syntaxes may define additional ones.
+
+If a string of text contains any special symbol, the syntax will interpret it as having a special meaning instead of treating it as literal text. To ensure the text is interpreted correctly, the string must be wrapped in quotation marks.
+
+The base special symbols are:
+
+1. Any kind of space  
+2. Any quotation mark (`'` or `"`)
+
+---
+
+#### 2. Keywords
+
+Each syntax may define keywords that are not interpreted literally, but instead have a predefined meaning.
+
+If a sequence of characters should be interpreted as a literal string rather than as a keyword, it must be enclosed in quotation marks as well.
+
+---
+
+#### 3. Quoted Strings
+
+Quotation marks are required when a string:
+
+- Contains special symbols  
+- Matches a keyword  
+
+Either single quotes (`'`) or double quotes (`"`) may be used, but the string must end with the same quotation mark it starts with.
+
+To include the same quotation mark inside a quoted string, it must be escaped using a backslash (`\`).  
+To include a backslash itself, it must also be escaped with another backslash.
+
+**Example:**
+
+```text
+"This is a \"cool\" string of text \\o/"
+```
+
+This will be interpreted as:
+
+```text
+This is a "cool" string of text \o/
+```
+
+If escaping is done incorrectly, an error will be returned.
+
+> [!TIP]  
+> When quotation marks are needed inside a string, the other quotation mark type can be used to wrap the string instead of escaping.  
+>  
+> Examples:  
+> - `"Bob's House"`  
+> - `'They called him "Mark"'`
+
+### Alias Syntax
+The alias syntax allows the user to input one to n aliases. 
+
+#### Special symbols or keywords:
+This syntax has no additional special symbols or keywords. 
+
+#### How it works:
+The user must simply chain strings in a row.
+
+#### Example:
+`Alias1 "Alias2 With Spaces" Alias3 "Alias4"`
+
+
+A task with this string in `aliases` specified will have the following aliases:
+- `Alias1`
+- `Alias2 With Spaces`
+- `Alias3`
+- `Alias4`
+
+
+### Mapping Syntax
+The mapping syntax allows the user to input anything that associates a unique key to 0 to n values. For example, when a user [gives themselves a task](#user-give), they can use this syntax to specify their user attribute value mapping.
+
+#### Special symbols or keywords:
+This syntax additionally has the special symbols `(`, `)` and `:`, but no keywords.
+
+#### How it works:
+Every key-value pair is wrapped inside of parentheses. The key string comes first. If it has more than zero values, it is then followed by a colon (`:`) and then by the values chained in a row, exactly like the [alias syntax](#alias-syntax), until a closing parenthesis (`)`) is found. A colon (`:`) may also be used if there are no values.
+
+#### Example:
+`(Proof: "my proof link1" "my proof link 2") (Rating: "5/5 Stars") (Notes)`
+
+The example above represents a user attribute value mapping when a user gives themselves a task.
+- To the user attribute `Proof` they assigned two pseudo proofs
+- To the user attribute `Rating` they assigned one rating, `5/5 Stars`
+- To the user attribute `Notes` they assigned nothing (could have been left out entirely, or they could have additionaly included a colon (`:`) after `Notes`).
+
+### Sort Syntax
+The sort syntax allows the user to input a sort for when they are browsing tasks.
+
+#### Special symbols or keywords:
+This syntax additionally has the special symbols `+` and `-`, but no keywords.
+
+#### How it works:
+This syntax works exactly like the [alias syntax](#alias-syntax), but a plus (`+`) or minus (`-`) must be placed before every string.
+
+Plus (`+`) means to sort by that attribute in ascending order, while (`-`) means to sort by that attribute in descending order. The first attribute specified is the primary sort, but if the value for two tasks is the same, then the secondary sort is used between them and so on. For attributes with collections, attributes get sorted by the values' positions in the collection instead of the actual value. 
+
+#### Example:
+`+Difficulty -Name`
+
+All tasks are sorted by the difficulty in ascending order. All tasks with the same difficulty will be sorted by their name in descending order.
+
+
+### Filter Syntax
+The filter syntax is the most powerful syntax and therefore the most complex. It allows the user to filter data in any way they may desire, with compact syntax.
+
+#### Special symbols or keywords:
+This syntax additionally has the special symbols `(`, `)` and `_`. It also has the keywords `and`, `or`, `is`, `is not`, `<`, `<=`, `>` and `>=`.
+
+#### How it works:
+This syntax works by alternating comparisons with boolean operators (`and`, `or`), to represent boolean logic that should be checked for each task. A comparison is an attribute, followed by a comparison operator (`is`, `is not`, `<`, `<=`, `>`, `>=`), followed by a value. The underscore (`_`), called the empty value symbol, can be used with the operators `is` and `is not` to check whether a task's value is empty. Parenthesis (`()`) can be used around a singular or multiple comparisons to change in which order boolean operators are applied, similar to how they are used in maths. By default, the `and` boolean operator has a higher precedence than the `or` boolean operator.
+
+#### Example:
+`(Difficulty < 9/10 or Name > Y) and Link >=`
