@@ -632,7 +632,7 @@ A task with this string in `aliases` specified will have the following aliases:
 
 
 ### Mapping Syntax
-The mapping syntax allows the user to input anything that associates a unique key with zero or more values. For example, when a user [gives themselves a task](#user-give), they can use this syntax to specify their user attribute value mapping.
+The mapping syntax allows the user to input anything that associates a unique key with zero or more values. For example, when a user [gives themselves a task](#task-give), they can use this syntax to specify their user attribute value mapping.
 
 #### Special symbols or keywords:
 This syntax additionally has the special symbols `(`, `)` and `:`, but no keywords.
