@@ -32,6 +32,7 @@ Show the name, lists, default selected list, connected server count and limits f
 
 #### `/community create`
 - `<name>`: The name the new community should have.
+- `<owner>`: The user that should be owner of the new community.
 - `[default_selected_list_name]`: The name of the list that should automatically be created with the community and also set as the default selected list. By default don't create it.
 
 Create a new community with the specified name and if specified create a default selected list. 
