@@ -647,6 +647,7 @@ The example above represents a user attribute value mapping when a user gives th
 - To the user attribute `Proof` they assigned two pseudo proofs
 - To the user attribute `Rating` they assigned one rating, `5/5 Stars`
 - To the user attribute `Notes` they assigned nothing
+
 In any case, the parentheses could have been included or removed, whatever may be preferred.
 
 ### Sort Syntax
