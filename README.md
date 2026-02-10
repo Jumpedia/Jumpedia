@@ -638,15 +638,16 @@ The mapping syntax allows the user to input anything that associates a unique ke
 This syntax additionally has the special symbols `(`, `)` and `:`, but no keywords.
 
 #### How it works:
-Every key-value pair is wrapped inside of parentheses. The key string comes first. If it has more than zero values, it is then followed by a colon (`:`) and then by the values chained in a row, exactly like the [alias syntax](#alias-syntax), until a closing parenthesis (`)`) is found. A colon (`:`) may also be used if there are no values.
+A key-value pair starts with the key, which is always identified by a leading colon (`:`). It may then be followed by values (exactly like the [alias syntax](#alias-syntax)) until the next key-value pair is identified (via an opening parenthesis (`(`) or a colon (`:`)) or the string ends. A key-value pair may be wrapped in parentheses (`()`). 
 
 #### Example:
-`(Proof: "my proof link1" "my proof link 2") (Rating: "5/5 Stars") (Notes)`
+`(Proof: "my proof link1" "my proof link 2") Rating: "5/5 Stars" Notes:`
 
 The example above represents a user attribute value mapping when a user gives themselves a task.
 - To the user attribute `Proof` they assigned two pseudo proofs
 - To the user attribute `Rating` they assigned one rating, `5/5 Stars`
-- To the user attribute `Notes` they assigned nothing (could have been left out entirely, or they could have additionally included a colon (`:`) after `Notes`).
+- To the user attribute `Notes` they assigned nothing
+In any case, the parentheses could have been included or removed, whatever may be preferred.
 
 ### Sort Syntax
 The sort syntax allows the user to input a sort for when they are browsing tasks.
