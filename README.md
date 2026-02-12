@@ -577,7 +577,7 @@ Each syntax may define keywords that are not interpreted literally, but instead 
 
 If a sequence of characters should be interpreted as a literal string rather than as a keyword, it must be enclosed in quotation marks as well.
 
-The difference between special symbols and keywords is that special symbols must only appear in any text and have special meaning, while keywords must exactly match a given string. For example the keyword `and` is not gonna be interpreted as a keyword in the word `sand`, but if `a` was a special symbol it would be recognized in `sand` as such and `sand` would need to be quoted.
+The difference between special symbols and keywords is that special symbols must only appear in text to already be interpreted as a special symbol, while keywords must exactly match a given string of characters. For example the keyword `and` is not gonna be interpreted as a keyword in the word `sand`, but if `a` was a special symbol, it would be interpreted as a special symbol in `sand` and `sand` would need to be quoted to be interpreted as text.
 
 ---
 
