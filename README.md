@@ -675,7 +675,7 @@ The filter syntax is the most powerful syntax and therefore the most complex. It
 This syntax additionally has the special symbols `(`, `)` and `_`. It also has the keywords `and`, `or`, `is`, `is not`, `<`, `<=`, `>` and `>=`.
 
 #### How it works:
-This syntax works by alternating comparisons with boolean operators (`and`, `or`), to represent boolean logic that should be checked for each task. A comparison is an attribute, followed by a comparison operator (`is`, `is not`, `<`, `<=`, `>`, `>=`), followed by a value. The underscore (`_`), called the empty value symbol, can be used with the operators `is` and `is not` to check whether a task's value is empty. Parenthesis (`()`) can be used around a singular or multiple comparisons to change in which order boolean operators are applied, similar to how they are used in maths. By default, the `and` boolean operator has a higher precedence than the `or` boolean operator.
+This syntax works by alternating comparisons with boolean operators (`and`, `or`), to represent boolean logic that should be checked for each task. A comparison is an attribute, followed by a comparison operator (`is`, `is not`, `<`, `<=`, `>`, `>=`), followed by a value. The underscore (`_`), called the empty value symbol, can be used with the operators `is` and `is not` to check whether a task's value is empty. Parentheses (`()`) can be used around a singular or multiple comparisons to change in which order boolean operators are applied, similar to how they are used in maths. By default, the `and` boolean operator has a higher precedence than the `or` boolean operator.
 
 #### Example:
 `(Difficulty < 9/10 or Name >= Y) and (Proof is not _)`
