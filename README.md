@@ -614,11 +614,12 @@ If escaping is done incorrectly, an error will be returned.
 > - `"Bob's House"`  
 > - `'They called him "Mark"'`
 
-### Value Array Syntax
-The value array syntax allows the user to input one to any number of values.
+### Value Sequence Syntax
+The value sequence syntax allows the user to input one to any number of values.<br/>
+This syntax is currently only used for specifying aliases.
 
 #### Special symbols or keywords:
-This syntax has no additional special symbols or keywords. 
+This syntax has no additional special symbols or keywords.
 
 #### How it works:
 The user must simply chain strings in a row.
@@ -626,7 +627,6 @@ The user must simply chain strings in a row.
 #### Example:
 `Value1 "Value2 With Spaces" Value3 "Value4"`
 
-This syntax is currently only used for specifying aliases.<br/>
 A task with this string in `aliases` specified will have the following aliases:
 - `Value1`
 - `Value2 With Spaces`
