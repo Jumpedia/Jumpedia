@@ -614,8 +614,8 @@ If escaping is done incorrectly, an error will be returned.
 > - `"Bob's House"`  
 > - `'They called him "Mark"'`
 
-### Alias Syntax
-The alias syntax allows the user to input one to any number of aliases.
+### Value Array Syntax
+The value array syntax allows the user to input one to any number of values.
 
 #### Special symbols or keywords:
 This syntax has no additional special symbols or keywords. 
@@ -624,14 +624,14 @@ This syntax has no additional special symbols or keywords.
 The user must simply chain strings in a row.
 
 #### Example:
-`Alias1 "Alias2 With Spaces" Alias3 "Alias4"`
+`Value1 "Value2 With Spaces" Value3 "Value4"`
 
-
+This syntax is currently only used for specifying aliases.<br/>
 A task with this string in `aliases` specified will have the following aliases:
-- `Alias1`
-- `Alias2 With Spaces`
-- `Alias3`
-- `Alias4`
+- `Value1`
+- `Value2 With Spaces`
+- `Value3`
+- `Value4`
 
 
 ### Mapping Syntax
@@ -674,7 +674,7 @@ This example sorts all tasks by difficulty in ascending order. All tasks with th
 The filter syntax is the most powerful syntax and therefore the most complex. It allows the user to filter data in any way they may desire, using a compact syntax.
 
 #### Special symbols or keywords:
-This syntax additionally has the special symbols `(`, `)` and `_`. It also has the keywords `and`, `or`, `is`, `is not`, `<`, `<=`, `>` and `>=`.
+This syntax additionally has the special symbols `(`, and `)`. It also has the keywords `and`, `or`, `is`, `is not`, `<`, `<=`, `>`, `>=` and `_`.
 
 #### How it works:
 This syntax works by alternating comparisons with boolean operators (`and`, `or`), to represent boolean logic that should be checked for each task. A comparison is an attribute, followed by a comparison operator (`is`, `is not`, `<`, `<=`, `>`, `>=`), followed by a value. The underscore (`_`), called the empty value symbol, can be used with the operators `is` and `is not` to check whether a task's value is empty. Parentheses (`()`) can be used around a singular or multiple comparisons to change in which order boolean operators are applied, similar to how they are used in maths. By default, the `and` boolean operator has a higher precedence than the `or` boolean operator.
